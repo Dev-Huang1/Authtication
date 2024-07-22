@@ -14,7 +14,7 @@ def index():
         session['totp_secret'] = pyotp.random_base32()
     
     totp = pyotp.TOTP(session['totp_secret'])
-    otp_uri = totp.provisioning_uri(name='user@example.com', issuer_name='YourApp')
+    otp_uri = totp.provisioning_uri(name='Tech-Art Studio Account', issuer_name='Tech-Art')
     
     # Generate QR code for the TOTP URI
     qr = qrcode.make(otp_uri)
