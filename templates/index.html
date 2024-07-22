@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TOTP Authentication</title>
+</head>
+<body>
+    <h1>Scan the QR Code with your Authenticator App</h1>
+    <img src="data:image/png;base64,{{ img_str }}" alt="TOTP QR Code">
+    <h2>Enter the TOTP Code</h2>
+    <form action="/validate" method="post">
+        <input type="text" name="token">
+        <button type="submit">Validate</button>
+    </form>
+</body>
+</html>
