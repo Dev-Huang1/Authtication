@@ -9,14 +9,12 @@ app.secret_key = 'your_secret_key'
 
 @app.route('/')
 def index():
-    # Generate a new TOTP secret key for the user
     if 'totp_secret' not in session:
         session['totp_secret'] = pyotp.random_base32()
     
     totp = pyotp.TOTP(session['totp_secret'])
     otp_uri = totp.provisioning_uri(name='Tech-Art Studio Account', issuer_name='Tech-Art')
     
-    # Generate QR code for the TOTP URI
     qr = qrcode.make(otp_uri)
     img = io.BytesIO()
     qr.save(img, 'PNG')
